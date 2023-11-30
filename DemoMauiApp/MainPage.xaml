@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoMauiApp.MainPage"
+             xmlns:model="clr-namespace:DemoMauiApp.Model"
+             xmlns:viewmodel="clr-namespace:DemoMauiApp.ViewModel"
+             ios:Page.UseSafeArea="True"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             Title="Groceries"
+             x:DataType="viewmodel:MyViewModel">
+
+    <Grid
+     ColumnDefinitions="*,*"
+     ColumnSpacing="5"
+     RowDefinitions="*,Auto"
+     RowSpacing="0"
+     BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+        <RefreshView
+         Grid.ColumnSpan="2"
+         Command="{Binding GetGroceriesCommand}"
+         IsRefreshing="{Binding IsRefreshing}">
+            <ContentView>
+                <CollectionView
+                     ItemsSource="{Binding Groceries}"
+                     SelectionMode="None">
+                    <CollectionView.EmptyView>
+                        <StackLayout Padding="100">
+                            <Image
+                                 HorizontalOptions="Center"
+                                 HeightRequest="160"
+                                 WidthRequest="160"
+                                 Source="nodata.png"
+                                 VerticalOptions="Center" />
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                   
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:MyModel">
+                            <Grid Padding="10" HorizontalOptions="Fill">
+                                <Frame HeightRequest="125" Style="{StaticResource CardView}">
+                                    
+                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                        <Image
+                                             Aspect="AspectFill"
+                                             HeightRequest="125"
+                                             Source="{Binding thumbnail}"
+                                             WidthRequest="125" />
+                                        <VerticalStackLayout
+                                             VerticalOptions="Center"
+                                             Grid.Column="1"
+                                             Padding="10">
+                                            <Label Style="{StaticResource LargeLabel}" Text="{Binding title}" />
+                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding description}" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ContentView>
+        </RefreshView>
+
+        <Button
+         Grid.Row="1"
+         Grid.Column="0"
+         Margin="8"
+         Command="{Binding GetGroceriesCommand}"
+         IsEnabled="{Binding IsNotBusy}"
+         Style="{StaticResource ButtonOutline}"
+         Text="Get Groceries" />
+
+
+
+        <ActivityIndicator
+         Grid.RowSpan="2"
+         Grid.ColumnSpan="2"
+         HorizontalOptions="Fill"
+         IsRunning="{Binding IsBusy}"
+         IsVisible="{Binding IsBusy}"
+         Color="{StaticResource Primary}"
+         VerticalOptions="Center" />
+    </Grid>
+
+</ContentPage>
