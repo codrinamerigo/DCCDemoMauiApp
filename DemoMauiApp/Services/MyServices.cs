@@ -24,11 +24,11 @@ public class MyServices
             return myModelList;
 
         // Online
-        var response = await httpClient.GetAsync("https://github.com/codrinamerigo/DCCDemoMauiApp/blob/master/DemoMauiApp/Resources/Raw/myData.json");
+       /* var response = await httpClient.GetAsync("https://github.com/codrinamerigo/DCCDemoMauiApp/blob/master/DemoMauiApp/Resources/Raw/myData.json");
         if (response.IsSuccessStatusCode)
         {
             myModelList = await response.Content.ReadFromJsonAsync(MyModelContext.Default.ListMyModel);
-        }
+        }*/
 
         // Offline
         using var stream = await FileSystem.OpenAppPackageFileAsync("myData.json");
