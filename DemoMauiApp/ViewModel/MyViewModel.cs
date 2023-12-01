@@ -22,10 +22,10 @@ public partial class MyViewModel : BaseViewModel
         if (myModel == null)
             return;
 
-        /*await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
     {
         {"Item", myModel }
-    });*/
+    });
     }
 
     [ObservableProperty]
@@ -68,6 +68,9 @@ public partial class MyViewModel : BaseViewModel
         }
 
     }
+
+
+  
 
     [RelayCommand]
     async Task GetClosest()
