@@ -22,10 +22,7 @@ public partial class MyViewModel : BaseViewModel
         if (myModel == null)
             return;
 
-        await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
-    {
-        {"Item", myModel }
-    });
+        await Shell.Current.GoToAsync(nameof(DetailsPage));
     }
 
     [ObservableProperty]

@@ -3,24 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DemoMauiApp.DetailsPage"
              xmlns:model="clr-namespace:DemoMauiApp.Model"
-             xmlns:viewmodel="clr-namespace:DemoMauiApp.DetailViewModel"
+             xmlns:viewmodel="clr-namespace:DemoMauiApp.ViewModel"
              ios:Page.UseSafeArea="True"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-
-             Title="{Binding myItem.title}"
- >
+             Title="{Binding MyModel.title}">
 
     <ScrollView BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
         
 
-        <Label Style="{StaticResource LargeLabel}" 
-        Grid.Row="1"
-        TextColor="White"
-        FontAttributes="Bold"
-        Text="{Binding }" 
-        HorizontalOptions="Center"
-        Margin="0,0,0,8"/>
-        
+              
         
         
         

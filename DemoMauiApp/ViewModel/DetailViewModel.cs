@@ -1,13 +1,11 @@
-﻿using DemoMauiApp.ViewModel;
+﻿namespace DemoMauiApp.ViewModel;
 
-namespace DemoMauiApp.DetailViewModel;
-
-[QueryProperty(nameof(MyModel), "myItem")]
+[QueryProperty(nameof(MyModel), "MyModel")]
 public partial class DetailViewModel: BaseViewModel
     {
 
         [ObservableProperty]
-        MyModel myItem;
+        MyModel myModel;
 
     }
 

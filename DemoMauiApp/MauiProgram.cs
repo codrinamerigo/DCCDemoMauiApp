@@ -1,4 +1,5 @@
-﻿using DemoMauiApp.Services;
+﻿
+using DemoMauiApp.Services;
 using Microsoft.Extensions.Logging;
 
 namespace DemoMauiApp
@@ -28,6 +29,9 @@ namespace DemoMauiApp
             builder.Services.AddSingleton<MyServices>();
             builder.Services.AddSingleton<MyViewModel>();
             builder.Services.AddSingleton<MainPage>();
+
+            builder.Services.AddTransient<DetailsPage>();
+
 
             return builder.Build();
         }
